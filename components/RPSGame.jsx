@@ -55,7 +55,7 @@ export default function RPSGame({ onClose }) {
 
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-xl font-bold text-white">Rock Paper Scissors</h3>
-                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
+                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                         <FaTimes size={20} />
                     </button>
                 </div>
@@ -117,14 +117,14 @@ export default function RPSGame({ onClose }) {
                 ) : (
                     <div className="text-center animate-in zoom-in duration-200">
                         <div className={`text-2xl font-bold mb-6 ${result === 'Win' ? 'text-green-400' :
-                                result === 'Lose' ? 'text-red-400' : 'text-yellow-400'
+                            result === 'Lose' ? 'text-red-400' : 'text-yellow-400'
                             }`}>
                             {result === 'Win' ? 'You Won!' :
                                 result === 'Lose' ? 'Ujjwal Won!' : 'It\'s a Draw!'}
                         </div>
                         <button
                             onClick={resetGame}
-                            className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors flex items-center gap-2 mx-auto"
+                            className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors flex items-center gap-2 mx-auto cursor-pointer"
                         >
                             <FaUndo /> Play Again
                         </button>

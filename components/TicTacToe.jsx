@@ -144,7 +144,7 @@ export default function TicTacToe({ onClose }) {
             <div className="w-[320px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl animate-in fade-in zoom-in duration-300">
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-xl font-bold text-white">Tic Tac Toe</h3>
-                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
+                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                         <FaTimes size={20} />
                     </button>
                 </div>
@@ -154,7 +154,7 @@ export default function TicTacToe({ onClose }) {
                         <button
                             key={i}
                             onClick={() => handleClick(i)}
-                            className={`h-20 rounded-lg text-4xl font-bold flex items-center justify-center transition-all duration-200 
+                            className={`h-20 rounded-lg text-4xl font-bold flex items-center justify-center transition-all duration-200 cursor-pointer
                 ${cell ? 'bg-white/20' : 'bg-white/5 hover:bg-white/10'}
                 ${cell === 'X' ? 'text-blue-400' : 'text-purple-400'}
               `}
@@ -175,7 +175,7 @@ export default function TicTacToe({ onClose }) {
                     </div>
                     <button
                         onClick={resetGame}
-                        className="p-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all"
+                        className="p-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all cursor-pointer"
                         title="Restart Game"
                     >
                         <FaUndo size={16} />

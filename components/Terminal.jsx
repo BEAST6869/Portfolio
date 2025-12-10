@@ -140,7 +140,7 @@ export default function Terminal() {
     };
 
     return (
-        <section className="w-full max-w-4xl py-6 border-t border-white/5">
+        <section id="terminal" className="w-full max-w-4xl py-6 border-t border-white/5">
             <div className="w-full rounded-xl overflow-hidden bg-[#1e1e1e] shadow-2xl border border-gray-800 font-mono text-sm sm:text-base">
                 {/* macOS Window Header */}
                 <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">

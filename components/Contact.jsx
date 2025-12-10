@@ -6,9 +6,12 @@ export default function Contact() {
                 <p className="text-gray-400 mb-6 max-w-md">
                     Currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                 </p>
-                <button className="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors">
+                <a
+                    href="mailto:ujjwalt616@gmail.com"
+                    className="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors cursor-pointer"
+                >
                     Say Hello
-                </button>
+                </a>
             </div>
         </section>
     );

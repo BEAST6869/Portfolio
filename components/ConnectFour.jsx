@@ -169,7 +169,7 @@ export default function ConnectFour({ onClose }) {
 
                 <div className="flex justify-between items-center mb-6">
                     <h3 className="text-xl font-bold text-white">Connect Four</h3>
-                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
+                    <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                         <FaTimes size={20} />
                     </button>
                 </div>
@@ -213,7 +213,7 @@ export default function ConnectFour({ onClose }) {
                     </div>
                     <button
                         onClick={resetGame}
-                        className="p-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all"
+                        className="p-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all cursor-pointer"
                     >
                         <FaUndo size={16} />
                     </button>
