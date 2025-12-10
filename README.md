@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website
+
+A personal portfolio website built with Next.js, React, and Tailwind CSS. This project features a modern, dark-themed design with glassmorphism effects and an interactive terminal component known as "TiwarminalX".
+
+## Features
+
+### Core Sections
+*   **Hero Section**: Introduces the developer with a profile image and social links.
+*   **About Me**: A brief bio highlighting professional focus.
+*   **Experience**: Lists professional experience and roles.
+*   **Skills**: Displays technical skills in a grid layout.
+*   **Projects**: Showcases featured projects with descriptions and links.
+*   **Contact**: A section for getting in touch (email).
+
+### TiwarminalX (Interactive Terminal)
+A custom-built terminal emulator embedded in the website.
+*   **Commands**: Supports commands like `help`, `about`, `experience`, `skills`, `projects`, `whois`, and `clear`.
+*   **Minigames**: Includes interactive GUI-based games:
+    *   **Tic Tac Toe**: Play against an AI opponent (Ujjwal) with a Minimax algorithm for optimal evaluation.
+    *   **Guess the Number**: A number guessing game with history tracking.
+    *   **Rock Paper Scissors**: A classic game with score tracking.
+    *   **Connect Four**: A strategy game against an AI opponent.
+*   **Design**: Features a macOS-style window design with glassmorphism effects.
+
+## Tech Stack
+
+*   **Framework**: Next.js 15 (App Router)
+*   **Library**: React
+*   **Styling**: Tailwind CSS v4
+*   **Icons**: React Icons (Fa, Si, etc.)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+*   Node.js (v18 or higher recommended)
+*   npm or yarn
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/BEAST6869/Portfolio.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd Portfolio
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Development Server
+
+Start the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*   `app/`: Main application routes and layouts (Next.js App Router).
+*   `components/`: Reusable React components (Navbar, Hero, Terminal, Games, etc.).
+*   `public/`: Static assets (images, fonts).
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+*   **Content**: Edit components in the `components/` directory to update text and data.
+*   **Styling**: Modify `app/globals.css` or use Tailwind utility classes within components.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open for personal use and modification.

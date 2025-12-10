@@ -1,6 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import TicTacToe from './TicTacToe';
+import GuessGame from './GuessGame';
+import RPSGame from './RPSGame';
+import ConnectFour from './ConnectFour';
 
 export default function Terminal() {
     const [input, setInput] = useState('');
@@ -15,8 +19,10 @@ export default function Terminal() {
     const terminalBodyRef = useRef(null);
 
     // Game State
-    const [gameState, setGameState] = useState(null); // 'guess' | 'rps' | null
-    const [gameData, setGameData] = useState({});
+    const [showTicTacToe, setShowTicTacToe] = useState(false);
+    const [showGuessGame, setShowGuessGame] = useState(false);
+    const [showRPS, setShowRPS] = useState(false);
+    const [showConnectFour, setShowConnectFour] = useState(false);
 
     useEffect(() => {
         if (terminalBodyRef.current) {
@@ -28,25 +34,21 @@ export default function Terminal() {
         const trimmedCmd = cmd.trim().toLowerCase();
         const newOutput = [...output, { type: 'command', content: `user@tiwarminal:~$ ${cmd}` }];
 
-        if (gameState) {
-            handleGameInput(trimmedCmd, newOutput);
-            return;
-        }
-
         switch (trimmedCmd) {
             case 'help':
                 newOutput.push({
                     type: 'info',
                     content: `Available commands:
-  help        - Show this help message
-  about       - Learn about me
-  experience  - View my work experience
-  skills      - View my technical skills
-  projects    - View my projects
-  whois       - Who am I?
-  clear       - Clear the terminal
-  games       - Play some games (guess, rps)
-  exit        - Close the session (simulated)`
+  help            - Show this help message
+  about           - Learn about me
+  experience      - View my work experience
+  skills          - View my technical skills
+  projects        - View my projects
+  whois           - Who am I?
+  clear           - Clear the terminal
+  games           - Play some games
+  play <game>     - Launch a specific game
+  exit            - Close the session (simulated)`
                 });
                 break;
             case 'about':
@@ -69,16 +71,33 @@ export default function Terminal() {
                 setInput('');
                 return;
             case 'games':
-                newOutput.push({ type: 'info', content: 'Available games:\n  guess - Guess the Number (1-100)\n  rps   - Rock Paper Scissors' });
+                newOutput.push({
+                    type: 'info', content: `Available games:
+    guess      - Guess the Number
+    tictactoe  - Tic Tac Toe 
+    rps        - Rock Paper Scissors 
+    connect4   - Connect Four ` });
                 break;
+            case 'play guess':
             case 'guess':
-                setGameState('guess');
-                setGameData({ target: Math.floor(Math.random() * 100) + 1, attempts: 0 });
-                newOutput.push({ type: 'warning', content: 'Game Started: Guess a number between 1 and 100. (Type "exit" to quit)' });
+                setShowGuessGame(true);
+                newOutput.push({ type: 'success', content: 'Launching Guess the Number...' });
                 break;
+            case 'play tictactoe':
+            case 'tictactoe':
+                setShowTicTacToe(true);
+                newOutput.push({ type: 'success', content: 'Launching Tic Tac Toe...' });
+                break;
+            case 'play rps':
             case 'rps':
-                setGameState('rps');
-                newOutput.push({ type: 'warning', content: 'Game Started: Rock, Paper, Scissors! Type your move. (Type "exit" to quit)' });
+                setShowRPS(true);
+                newOutput.push({ type: 'success', content: 'Launching Rock Paper Scissors...' });
+                break;
+            case 'play connect4':
+            case 'connect4':
+            case 'connectfour':
+                setShowConnectFour(true);
+                newOutput.push({ type: 'success', content: 'Launching Connect Four...' });
                 break;
             case 'exit':
                 newOutput.push({ type: 'error', content: 'Session terminated. Refresh to restart.' });
@@ -92,60 +111,6 @@ export default function Terminal() {
         setOutput(newOutput);
         setHistory([...history, cmd]);
         setHistoryIndex(-1);
-        setInput('');
-    };
-
-    const handleGameInput = (val, newOutput) => {
-        if (val === 'exit') {
-            setGameState(null);
-            setGameData({});
-            newOutput.push({ type: 'info', content: 'Game Exited.' });
-            setOutput(newOutput);
-            setInput('');
-            return;
-        }
-
-        if (gameState === 'guess') {
-            const guess = parseInt(val);
-            if (isNaN(guess)) {
-                newOutput.push({ type: 'error', content: 'Please enter a valid number.' });
-            } else {
-                const { target, attempts } = gameData;
-                const newAttempts = attempts + 1;
-                if (guess === target) {
-                    newOutput.push({ type: 'success', content: `Correct! You guessed ${target} in ${newAttempts} attempts.` });
-                    setGameState(null);
-                } else if (guess < target) {
-                    newOutput.push({ type: 'info', content: 'Too low! Try again.' });
-                    setGameData({ ...gameData, attempts: newAttempts });
-                } else {
-                    newOutput.push({ type: 'info', content: 'Too high! Try again.' });
-                    setGameData({ ...gameData, attempts: newAttempts });
-                }
-            }
-        } else if (gameState === 'rps') {
-            const moves = ['rock', 'paper', 'scissors'];
-            if (!moves.includes(val)) {
-                newOutput.push({ type: 'error', content: 'Invalid move. Type "rock", "paper", or "scissors".' });
-            } else {
-                const cpuMove = moves[Math.floor(Math.random() * 3)];
-                let result = '';
-                if (val === cpuMove) result = 'Draw!';
-                else if (
-                    (val === 'rock' && cpuMove === 'scissors') ||
-                    (val === 'paper' && cpuMove === 'rock') ||
-                    (val === 'scissors' && cpuMove === 'paper')
-                ) result = 'You Win!';
-                else result = 'You Lose!';
-
-                newOutput.push({ type: 'info', content: `You: ${val} | CPU: ${cpuMove}` });
-                newOutput.push({ type: result === 'You Win!' ? 'success' : result === 'You Lose!' ? 'error' : 'warning', content: result });
-                // Stay in game loop or exit? Let's keep playing until exit
-                newOutput.push({ type: 'info', content: 'Play again or type "exit" to quit.' });
-            }
-        }
-
-        setOutput(newOutput);
         setInput('');
     };
 
@@ -189,7 +154,7 @@ export default function Terminal() {
                     </div>
                 </div>
 
-                
+                {/* Terminal Body */}
                 <div ref={terminalBodyRef} className="p-4 h-[400px] overflow-y-auto text-gray-300" onClick={() => inputRef.current?.focus()}>
                     {output.map((line, i) => (
                         <div key={i} className={`mb-1 whitespace-pre-wrap ${line.type === 'error' ? 'text-red-400' :
@@ -217,6 +182,10 @@ export default function Terminal() {
                     <div ref={bottomRef} />
                 </div>
             </div>
+            {showTicTacToe && <TicTacToe onClose={() => setShowTicTacToe(false)} />}
+            {showGuessGame && <GuessGame onClose={() => setShowGuessGame(false)} />}
+            {showRPS && <RPSGame onClose={() => setShowRPS(false)} />}
+            {showConnectFour && <ConnectFour onClose={() => setShowConnectFour(false)} />}
         </section>
     );
 }
