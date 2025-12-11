@@ -173,8 +173,8 @@ export default function Terminal() {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={handleKeyDown}
-                            className="flex-1 bg-transparent border-none outline-none text-white placeholder-gray-600"
-                            autoFocus
+                            className="flex-1 bg-transparent border-none outline-none focus:outline-none focus:ring-0 text-white placeholder-gray-600"
+                            style={{ outline: 'none', boxShadow: 'none' }}
                             spellCheck="false"
                             autoComplete="off"
                         />

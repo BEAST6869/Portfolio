@@ -88,7 +88,7 @@ function ParticleField() {
 
 export default function Scene3D() {
     return (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none animate-fade-in opacity-0">
             <Canvas
                 camera={{ position: [0, 0, 5], fov: 75 }}
                 style={{ background: 'transparent' }}

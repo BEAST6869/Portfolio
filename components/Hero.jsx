@@ -3,7 +3,7 @@ import Scene3D from './Scene3D';
 
 export default function Hero() {
     return (
-        <section id="hero" className="relative flex flex-col items-center justify-center min-h-screen w-full max-w-4xl text-center pt-20">
+        <section id="hero" className="relative flex flex-col items-center justify-center min-h-screen w-full max-w-4xl text-center pt-20 animate-fade-in opacity-0">
             {/* 3D Background */}
             <Scene3D />
 
