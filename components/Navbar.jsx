@@ -48,10 +48,10 @@ export default function Navbar() {
                 <button
                     key={item.name}
                     onClick={() => scrollToSection(item.id)}
-                    className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-gray-300 transition-all duration-300 rounded-full hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer"
+                    className="flex items-center gap-2 px-2 sm:px-3 py-2 text-sm font-medium text-gray-300 transition-all duration-300 rounded-full hover:bg-white/10 hover:text-white active:scale-95 cursor-pointer"
                 >
-                    <item.icon />
-                    <span>{item.name}</span>
+                    <item.icon className="text-base sm:text-lg" />
+                    <span className="hidden sm:inline">{item.name}</span>
                 </button>
             ))}
         </nav>

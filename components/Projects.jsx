@@ -24,14 +24,14 @@ export default function Projects() {
 
     return (
         <section id="projects" className="w-full max-w-4xl py-6 border-t border-white/5">
-            <div className="p-8 rounded-3xl bg-[#111111] border border-white/5 shadow-lg">
-                <h2 className="text-3xl font-bold mb-8 text-white text-left">Projects</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 sm:p-6 md:p-8 rounded-3xl bg-[#111111] border border-white/5 shadow-lg">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-white text-left">Projects</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     {projects.map((project, index) => (
-                        <div key={index} className="group p-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all duration-300 flex flex-col justify-between h-full">
+                        <div key={index} className="group p-4 sm:p-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all duration-300 flex flex-col justify-between h-full">
                             <div>
                                 <div className="flex items-start justify-between mb-4">
-                                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
                                     {project.link && (
                                         <a
                                             href={project.link}
@@ -43,7 +43,7 @@ export default function Projects() {
                                         </a>
                                     )}
                                 </div>
-                                <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                                <p className="text-gray-400 text-sm mb-4 sm:mb-6 leading-relaxed">
                                     {project.description}
                                 </p>
                             </div>
