@@ -34,7 +34,7 @@ export default function Hero() {
                         <FaEnvelope className="text-xl text-gray-300 group-hover:text-white transition-colors" />
                         <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Email</span>
                     </a>
-                    <a href="" target="_blank" rel="noopener noreferrer" className="group relative p-4 bg-white/5 rounded-full hover:bg-white/10 transition-all duration-300">
+                    <a href="www.linkedin.com/in/ujjwal-tiwari-29801b342" target="_blank" rel="noopener noreferrer" className="group relative p-4 bg-white/5 rounded-full hover:bg-white/10 transition-all duration-300">
                         <FaLinkedin className="text-xl text-gray-300 group-hover:text-white transition-colors" />
                         <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">LinkedIn</span>
                     </a>

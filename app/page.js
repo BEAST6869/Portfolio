@@ -21,11 +21,11 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-col items-center w-full px-4 sm:px-0">
         <Hero />
+        <Terminal />
         <About />
         <Experience />
         <Skills />
         <Projects />
-        <Terminal />
         <Contact />
       </main>
     </div>
