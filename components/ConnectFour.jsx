@@ -20,7 +20,6 @@ export default function ConnectFour({ onClose }) {
     }, [isPlayerTurn, winner]);
 
     const checkWin = (b, r, c, player) => {
-        // Directions: Horizontal, Vertical, Diagonal /, Diagonal \
         const directions = [
             [[0, 1], [0, 2], [0, 3]],
             [[1, 0], [2, 0], [3, 0]],
@@ -29,21 +28,15 @@ export default function ConnectFour({ onClose }) {
         ];
 
         for (let d of directions) {
-            // Check forward and backward
             for (let delta of d) {
-                // Simplified: The complete logic usually checks 4 connected. 
-                // Since we check after every move, we check all possible lines passing through (r,c)
             }
         }
-        // Standard sweep is easier
-        // Horizontal
         for (let i = 0; i < ROWS; i++) {
             for (let j = 0; j <= COLS - 4; j++) {
                 if (b[i][j] === player && b[i][j + 1] === player && b[i][j + 2] === player && b[i][j + 3] === player)
                     return [[i, j], [i, j + 1], [i, j + 2], [i, j + 3]];
             }
         }
-        // Vertical
         for (let i = 0; i <= ROWS - 4; i++) {
             for (let j = 0; j < COLS; j++) {
                 if (b[i][j] === player && b[i + 1][j] === player && b[i + 2][j] === player && b[i + 3][j] === player)
@@ -57,7 +50,6 @@ export default function ConnectFour({ onClose }) {
                     return [[i, j], [i + 1, j + 1], [i + 2, j + 2], [i + 3, j + 3]];
             }
         }
-        // Diag /
         for (let i = 0; i <= ROWS - 4; i++) {
             for (let j = 3; j < COLS; j++) {
                 if (b[i][j] === player && b[i + 1][j - 1] === player && b[i + 2][j - 2] === player && b[i + 3][j - 3] === player)
@@ -96,9 +88,6 @@ export default function ConnectFour({ onClose }) {
     };
 
     const makeBotMove = () => {
-        // Smart AI
-
-        // Helper to simulate a move
         const simulateMove = (simBoard, col, player) => {
             const row = getLowestEmptyRow(simBoard, col);
             if (row === -1) return null;
@@ -107,7 +96,6 @@ export default function ConnectFour({ onClose }) {
             return { board: newSimBoard, row };
         };
 
-        // 1. Check for Winning Move
         for (let c = 0; c < COLS; c++) {
             const sim = simulateMove(board, c, 'Ujjwal');
             if (sim) {
@@ -118,18 +106,16 @@ export default function ConnectFour({ onClose }) {
             }
         }
 
-        // 2. Check for Blocking Move
         for (let c = 0; c < COLS; c++) {
             const sim = simulateMove(board, c, 'Player');
             if (sim) {
                 if (checkWin(sim.board, sim.row, c, 'Player')) {
-                    dropPieceBot(c); // Block!
+                    dropPieceBot(c);
                     return;
                 }
             }
         }
 
-        // 3. Prefer Center Columns (Strategy)
         const centerOrder = [3, 2, 4, 1, 5, 0, 6];
         const validCols = centerOrder.filter(c => getLowestEmptyRow(board, c) !== -1);
 
@@ -174,7 +160,6 @@ export default function ConnectFour({ onClose }) {
                     </button>
                 </div>
 
-                {/* Board */}
                 <div className="bg-blue-600/30 p-4 rounded-xl border border-blue-500/30 mb-6">
                     <div className="grid grid-cols-7 gap-2 sm:gap-3">
                         {Array.from({ length: COLS }).map((_, colIndex) => (
@@ -196,7 +181,6 @@ export default function ConnectFour({ onClose }) {
                     </div>
                 </div>
 
-                {/* Status */}
                 <div className="flex justify-between items-center">
                     <div className="font-medium text-white">
                         {winner ? (

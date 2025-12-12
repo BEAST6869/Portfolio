@@ -5,7 +5,7 @@ import { FaTimes, FaHandRock, FaHandPaper, FaHandScissors, FaUndo } from 'react-
 export default function RPSGame({ onClose }) {
     const [userMove, setUserMove] = useState(null);
     const [botMove, setBotMove] = useState(null);
-    const [result, setResult] = useState(null); // 'Win', 'Lose', 'Draw'
+    const [result, setResult] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
     const [score, setScore] = useState({ user: 0, bot: 0 });
@@ -17,11 +17,10 @@ export default function RPSGame({ onClose }) {
     ];
 
     const handleMove = (moveName) => {
-        if (userMove) return; // Prevent multiple clicks
+        if (userMove) return;
         setIsPlaying(true);
         setUserMove(moveName);
 
-        // Simulate thinking delay
         setTimeout(() => {
             const cpuMove = moves[Math.floor(Math.random() * 3)].name;
             setBotMove(cpuMove);
@@ -60,7 +59,6 @@ export default function RPSGame({ onClose }) {
                     </button>
                 </div>
 
-                {/* Score Board */}
                 <div className="flex justify-center gap-8 mb-6 text-sm font-bold text-gray-300">
                     <div className="flex flex-col items-center">
                         <span>You</span>
@@ -72,9 +70,8 @@ export default function RPSGame({ onClose }) {
                     </div>
                 </div>
 
-                {/* Game Area */}
+
                 <div className="flex justify-between items-center mb-10 px-4">
-                    {/* User Side */}
                     <div className="text-center">
                         <div className={`w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-3xl transition-all ${userMove ? 'scale-110 shadow-[0_0_20px_rgba(255,255,255,0.1)]' : ''}`}>
                             {userMove ? (
@@ -87,7 +84,6 @@ export default function RPSGame({ onClose }) {
 
                     <div className="text-2xl font-bold text-gray-500">VS</div>
 
-                    {/* Bot Side */}
                     <div className="text-center">
                         <div className={`w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-3xl transition-all ${botMove ? 'scale-110 shadow-[0_0_20px_rgba(255,255,255,0.1)]' : ''}`}>
                             {botMove ? (
@@ -99,7 +95,6 @@ export default function RPSGame({ onClose }) {
                     </div>
                 </div>
 
-                {/* Controls / Result */}
                 {!result ? (
                     <div className="grid grid-cols-3 gap-3">
                         {moves.map((move) => (
@@ -107,7 +102,7 @@ export default function RPSGame({ onClose }) {
                                 key={move.name}
                                 onClick={() => handleMove(move.name)}
                                 disabled={!!userMove}
-                                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                             >
                                 <move.icon className={`text-2xl ${move.color}`} />
                                 <span className="text-xs text-gray-300 capitalize">{move.name}</span>

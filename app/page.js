@@ -12,7 +12,6 @@ import Contact from '../components/Contact';
 
 export default function Home() {
   useEffect(() => {
-    // Scroll to top on page load
     window.scrollTo(0, 0);
   }, []);
 

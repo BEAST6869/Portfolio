@@ -18,7 +18,6 @@ export default function Terminal() {
     const bottomRef = useRef(null);
     const terminalBodyRef = useRef(null);
 
-    // Game State
     const [showTicTacToe, setShowTicTacToe] = useState(false);
     const [showGuessGame, setShowGuessGame] = useState(false);
     const [showRPS, setShowRPS] = useState(false);
@@ -142,7 +141,6 @@ export default function Terminal() {
     return (
         <section id="terminal" className="w-full max-w-4xl py-6 border-t border-white/5">
             <div className="w-full rounded-xl overflow-hidden bg-[#1e1e1e] shadow-2xl border border-gray-800 font-mono text-sm sm:text-base">
-                {/* macOS Window Header */}
                 <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">
                     <div className="flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -154,7 +152,6 @@ export default function Terminal() {
                     </div>
                 </div>
 
-                {/* Terminal Body */}
                 <div ref={terminalBodyRef} className="p-4 h-[400px] overflow-y-auto text-gray-300" onClick={() => inputRef.current?.focus()}>
                     {output.map((line, i) => (
                         <div key={i} className={`mb-1 whitespace-pre-wrap ${line.type === 'error' ? 'text-red-400' :

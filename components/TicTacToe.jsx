@@ -81,16 +81,14 @@ export default function TicTacToe({ onClose }) {
         let bestScore = -Infinity;
         let move = -1;
 
-        // First move optimization: Take center if available, else corners
         const availableMoves = board.filter(s => s === null).length;
         if (availableMoves === 9 || availableMoves === 8) {
-            // If it's the very first moves, standard openings save computation and are optimal
             if (board[4] === null) move = 4;
             else move = 0;
         } else {
             for (let i = 0; i < 9; i++) {
                 if (board[i] === null) {
-                    const tempBoard = [...board]; // Create a temporary board for minimax
+                    const tempBoard = [...board];
                     tempBoard[i] = 'O';
                     const score = minimax(tempBoard, 0, false);
                     if (score > bestScore) {
@@ -118,7 +116,7 @@ export default function TicTacToe({ onClose }) {
     };
 
     const handleClick = (i) => {
-        if (winner || board[i] || !isXNext) return; // Prevent clicking during bot turn
+        if (winner || board[i] || !isXNext) return;
         const newBoard = [...board];
         newBoard[i] = 'X';
         setBoard(newBoard);

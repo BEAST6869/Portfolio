@@ -5,14 +5,13 @@ import { FaTimes, FaUndo, FaCheck } from 'react-icons/fa';
 export default function GuessGame({ onClose }) {
     const [target, setTarget] = useState(0);
     const [guess, setGuess] = useState('');
-    const [history, setHistory] = useState([]); // Array of { value: number, feedback: string }
+    const [history, setHistory] = useState([]);
     const [gameOver, setGameOver] = useState(false);
     const [gameWon, setGameWon] = useState(false);
     const inputRef = useRef(null);
 
     useEffect(() => {
         startNewGame();
-        // Auto focus input
         setTimeout(() => inputRef.current?.focus(), 100);
     }, []);
 
